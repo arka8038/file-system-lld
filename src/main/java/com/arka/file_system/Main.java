@@ -1,17 +1,26 @@
-package comarka.file_system;
+package com.arka.file_system;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        FileSystem file1 = new File("file1.txt");
+        FileSystem file2 = new File("file2.txt");
+        FileSystem file3 = new File("file3.txt");
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+        FileSystem dir1 = new Directory("dir1");
+        FileSystem dir2 = new Directory("dir2");
+
+        try {
+            dir1.add(file1);
+            dir1.add(file2);
+
+            dir2.add(file3);
+            dir2.add(dir1);
+
+            dir2.print("");
+        } catch (UnsupportedOperationException e) {
+            e.printStackTrace();
         }
     }
 }
